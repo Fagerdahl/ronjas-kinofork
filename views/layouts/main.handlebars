@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Kino Kvikkjokk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="dist/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__logo">
+        <h1 class="header__logo-title">Kino Kvikkjokk</h1>
+      </div>
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li class="header__nav-item"><a href="#menu">Menyn</a></li>
+          <li class="header__nav-item"><a href="#children-movies">Barnfilmer</a></li>
+          <li class="header__nav-item"><a href="#events">Evenemang</a></li>
+          <li class="header__nav-item"><a href="#about-us">Om oss</a></li>
+          <li class="header__nav-item"><a href="#login">Logga in</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main">
+      <div class="movie__wrapper">
+        {{#each movies}}
+          <div class="movie__item">
+            <img src="{{this.image}}" alt="{{this.title}} film" class="movie__image" />
+            <h2 class="movie__title">{{this.title}}</h2>
+            <p class="movie__description">{{this.description}}</p>
+          </div>
+        {{/each}}
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__social">
+        <h3 class="footer__social-title">Följ oss</h3>
+        <a class="footer__social-twitter" href="https://x.com/"><img src="assets/images/icons/icons-twitter-white-512.png" alt="Twitter"></a>
+        <a class="footer__social-instagram" href="https://www.instagram.com/"><img src="assets/images/icons/icons-instagram-white-512.png" alt="Instagram"></a>
+        <a class="footer__social-youtube" href="https://www.youtube.com/"><img src="assets/images/icons/icons-youtube-white-512.png" alt="YouTube"></a>
+        <a class="footer__social-linkedin" href="https://www.linkedin.com/"><img src="assets/images/icons/icons-linkedin-white-512.png" alt="LinkedIn"></a>
+      </div>
+    </footer>
+
+    <script src="Script/main.js"></script>
+    <script src="Script/fetch.js"></script>
+    <script src="Script/UI-movies.js"></script>
+  </body>
+</html>
