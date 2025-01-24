@@ -1,1 +1,0 @@
-const API_URL = "https://plankton-app-xhkom.ondigitalocean.app/api/movies";
