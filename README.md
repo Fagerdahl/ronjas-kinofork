@@ -1,4 +1,5 @@
 # Kino-Scrum
+
 Website for a local movie theater
 
 ## SSR functionality to this page
@@ -14,8 +15,8 @@ Serva hela sidan med hjälp av node på port 5080, exempelvis express och dess �
 En sida ska vara en lista på filmer, där listan ska hämtas från ett API. Om en användare återkommer efter att fler filmer tillkommit ska det återspeglas på sidan.
 Varje film ska ha en egen sida som visar titel, intro och bild
 Använd följande API-resurser:
-Filmer: https://plankton-app-xhkom.ondigitalocean.app/api/movies 
-Enstaka film: https://plankton-app-xhkom.ondigitalocean.app/api/movies/<id> 
+Filmer: https://plankton-app-xhkom.ondigitalocean.app/api/movies
+Enstaka film: https://plankton-app-xhkom.ondigitalocean.app/api/movies/<id>
 Det ska finnas ett integrationstest som verifierar att filmsidor visar rätt titel
 För betyget Väl Godkänd krävs ytterligare tre moment:
 En annan template-motor än Handlebars ska användas för att rendera hela webbplatsen, inkl filmsidorna. Gör research och välj en template-motor. Motivera i inlämningen varför du valt den motor du valt.
@@ -49,3 +50,18 @@ Det betyder för denna uppgift, utöver kriterierna för godkänt:
 Samtliga VG-moment är genomförda
 Koden håller hög kvalitet avseende sådant som struktur, formatering, och “separation of concerns”
 Valet av template-motor motiveras utifrån fördjupad kunskap och förståelse
+
+### STARTING FRESH
+
+Jag överväger att byta till en templatemotor som jag har fått mer erfarenhet av. (EJS)
+Jag uppskattar att det går att blanda JS direkt i mallarna.
+Men jag ska prova först med handlebars så jag tar vid där jag slutade.
+
+TODO:
+() Filmlista från API:et https://plankton-app-xhkom.ondigitalocean.app/api/movies
+() Enskild filmsida från API:et https://plankton-app-xhkom.ondigitalocean.app/api/movies/<id>
+() Omvandla markdown till HTML
+() Felsida, om anv försöker besöka en filmsida som inte finns, returnerar servern en anpassad felsida med HTTP status 404. Verifieras med ett integrationstest. SKA köras med npm test. API anrop ska funka, likaså rendering av filmer och felhantering. Jag ska hålla testerna uppdelade så att jag kan testa felsidan separat/isolerat.
+
+MÅL:
+Node-baserad webbapp med serverside rendering

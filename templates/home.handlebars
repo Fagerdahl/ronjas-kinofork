@@ -1,0 +1,13 @@
+<!--Moviepage with a list of movies-->
+
+<h2>Filmer</h2>
+<div class="movies-list">
+  {{#each movies}}
+    <div class="movie-card">
+      <h3>{{this.attributes.title}}</h3>
+       <p>{{this.attributes.intro}}</p>
+       <img src="{{this.attributes.image.url}}" alt="{{this.attributes.title}}">
+      <a href="/movie/{{this.id}}">Läs mer</a>
+    </div>
+  {{/each}}
+</div>

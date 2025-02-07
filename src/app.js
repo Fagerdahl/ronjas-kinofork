@@ -7,26 +7,43 @@ import { engine } from 'express-handlebars'
 
 const app = express()
 
+//Configuration template engine
 app.engine('handlebars', engine())
 app.set('view engine', 'handlebars')
 app.set('views', './templates')
 
 //simple testroute
 app.get('/', (req, res) => {
-  res.render('home', { title: 'Welcome to my express app' })
+  res.render('home', { title: 'Welcome to Ronjas express app' })
 })
 
-//axios, used to HTTP requests to extern API:s.
-//Axios is needed to send or get data across the network, axios makes the API calls
-//(fs.promises is used when handling files locally)
-import axios from 'axios'
-axios
-  .get('https://plankton-app-xhkom.ondigitalocean.app/api/movies')
-  .then((response) => {
-    console.log(response.data) // Skriv ut data från API:t
-  })
-  .catch((error) => {
-    console.error('Error fetching movies:', error)
-  })
+//Route for movies-list
+app.get('/', async (req, res) => {
+  try {
+    const response = await axios.get('https://plankton-app-xhkom.ondigitalocean.app/api/movies')
+    const movies = response.data.data //Movies list
+
+    res.render('home', {
+      title: 'Welcome to Ronjas express app', //injections
+      movies, //injections
+      logoTitle: 'Kino Kvikkjokk', //injections
+      footerText: 'Kino 2025', //injections
+    })
+  } catch (error) {
+    res.status(500).send('Problem getting movieslist and Ronjas express app')
+  }
+})
+
+//Route for single movie
+app.get('/movie/:id', async (req, res) => {
+  try {
+    const { id } = req.params
+    const response = await axios.get(`https://plankton-app-xhkom.ondigitalocean.app/api/movies/${id}`)
+    const movie = response.data
+    res.render('movie', { title: movie.title, movie, logoTitle: 'Kino Kvikkjokk', footerText: '© Kino 2025' })
+  } catch (error) {
+    res.status(404).render('404', { title: 'Film ej hittad', logoTitle: 'Kino Kvikkjokk' })
+  }
+})
 
 export default app
