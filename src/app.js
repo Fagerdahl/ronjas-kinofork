@@ -4,18 +4,22 @@
 //express
 import express from 'express'
 import { engine } from 'express-handlebars'
+import axios from 'axios'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import { fetchMovie, fetchAPI } from '../static/Script/fetch.js'
 
 const app = express()
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+app.use('/static', express.static(path.join(__dirname, '../static')))
 
 //Configuration template engine
 app.engine('handlebars', engine())
 app.set('view engine', 'handlebars')
 app.set('views', './templates')
-
-//simple testroute
-app.get('/', (req, res) => {
-  res.render('home', { title: 'Welcome to Ronjas express app' })
-})
 
 //Route for movies-list
 app.get('/', async (req, res) => {
@@ -40,7 +44,7 @@ app.get('/movie/:id', async (req, res) => {
     const { id } = req.params
     const response = await axios.get(`https://plankton-app-xhkom.ondigitalocean.app/api/movies/${id}`)
     const movie = response.data
-    res.render('movie', { title: movie.title, movie, logoTitle: 'Kino Kvikkjokk', footerText: '© Kino 2025' })
+    res.render('movie', { title: movie.title, movie, logoTitle: 'Kino Kvikkjokk', footerText: 'Kino 2025' })
   } catch (error) {
     res.status(404).render('404', { title: 'Film ej hittad', logoTitle: 'Kino Kvikkjokk' })
   }

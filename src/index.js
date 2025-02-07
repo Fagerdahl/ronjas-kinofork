@@ -5,10 +5,14 @@
 // Starta servern
 
 // index.js - Kör Express-servern
-import app from './app.js' // Importera Express-applikationen från app.js
+import app from './app.js'
+import { fetchAPI, fetchMovie } from '../static/Script/fetch.js'
 
-const PORT = 5080 // Ange porten du vill att servern ska lyssna på
+const api = {
+  fetchAPI,
+  fetchMovie,
+}
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`)
+app.listen(5080, () => {
+  console.log(`Server is running on http://localhost:5080`)
 })
