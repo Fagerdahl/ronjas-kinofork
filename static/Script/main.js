@@ -1,8 +1,7 @@
 //Fetch FrontPage Content
 //Loading all duynamic content into out page
 
-loadFrontPageContent()
-addFrontPageContent()
+import { fetchAPI } from './fetch.js'
 
 async function loadFrontPageContent() {
   try {
