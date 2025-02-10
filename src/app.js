@@ -50,4 +50,13 @@ app.get('/movie/:id', async (req, res) => {
   }
 })
 
+//Route for 404-handling
+app.use((req, res) => {
+  res.status(404).render('404', {
+    title: 'Sidan hittades tyvärr inte',
+    logoTitle: 'Kino Kvikkjokk',
+    footerText: 'Kino 2025',
+  })
+})
+
 export default app

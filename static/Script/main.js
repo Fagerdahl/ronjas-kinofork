@@ -1,4 +1,5 @@
 //Fetch FrontPage Content
+//Loading all duynamic content into out page
 
 loadFrontPageContent()
 addFrontPageContent()
