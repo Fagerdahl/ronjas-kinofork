@@ -6,6 +6,7 @@ import express from 'express'
 import { engine } from 'express-handlebars'
 import axios from 'axios'
 import path from 'path'
+import { fileURLToPath } from 'url'
 
 const app = express()
 
@@ -45,7 +46,7 @@ app.get('/movie/:id', async (req, res) => {
     const response = await axios.get(`https://plankton-app-xhkom.ondigitalocean.app/api/movies/${id}`)
     const movie = response.data
 
-    //Rendering a page with moviedata
+    //Rendering a page with moviedata required in the assignment
     res.render('movie', { title: movie.title, movie, logoTitle: 'Kino Kvikkjokk', footerText: 'Kino 2025' })
   } catch (error) {
     res.status(404).render('404', { title: 'Film ej hittad', logoTitle: 'Kino Kvikkjokk', footerText: 'Kino 2025' })
