@@ -1,3 +1,5 @@
+//returning an object with movieContent och returnButtonContent containing HTML-strings based on movieData.
+
 export async function showSoloMovie(movieData) {
   const movieContent = `
       <div class="moviedata__div">
