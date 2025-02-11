@@ -13,7 +13,7 @@ const __dirname = path.dirname(__filename)
 
 //Confuguration variable for header and footer
 const SITE_CONFIG = {
-  logoTitle: 'Kino Kvikkjokk',
+  logoTitle: 'Ronjas Kino Kvikkjokk',
   footerText: 'Kino 2025',
 }
 
