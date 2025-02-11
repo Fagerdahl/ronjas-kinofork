@@ -65,3 +65,8 @@ TODO:
 
 MÅL:
 Node-baserad webbapp med serverside rendering
+
+TEST!
+Kolla startsida / om filmer hämtas och sidan rederas korrekt
+Kolla enskild film om den hämtas (/movie/:id)
+404- se till att fel route ger felmeddelande
