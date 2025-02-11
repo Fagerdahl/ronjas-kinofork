@@ -1,72 +1,50 @@
-# Kino-Scrum
+# Ronjas Kino Kvikkjokk
 
-Website for a local movie theater
+Website for a local Movie theater
 
-## SSR functionality to this page
+## API sources
 
-Inlämningsuppgift
-Denna uppgift går ut på att på Kino-webbplatsen tillgängliggöra server-siderenderade filmsidor vars data kommer från ett API.
-
-Uppgiften
-I förra kursen byggde ni i grupp en webbplats för biografen “Kino”. Nu ska du individuellt utgå från den webbplatsen, och använda node för att serva hela webbplatsen, samt server-side rendering (SSR) för att rendera filmsidor.
-
-Moment
-Serva hela sidan med hjälp av node på port 5080, exempelvis express och dess “middleware” för statiska filer eller med hjälp av server-siderendering för att återanvända mallar/templates
-En sida ska vara en lista på filmer, där listan ska hämtas från ett API. Om en användare återkommer efter att fler filmer tillkommit ska det återspeglas på sidan.
-Varje film ska ha en egen sida som visar titel, intro och bild
-Använd följande API-resurser:
 Filmer: https://plankton-app-xhkom.ondigitalocean.app/api/movies
+
 Enstaka film: https://plankton-app-xhkom.ondigitalocean.app/api/movies/<id>
-Det ska finnas ett integrationstest som verifierar att filmsidor visar rätt titel
-För betyget Väl Godkänd krävs ytterligare tre moment:
-En annan template-motor än Handlebars ska användas för att rendera hela webbplatsen, inkl filmsidorna. Gör research och välj en template-motor. Motivera i inlämningen varför du valt den motor du valt.
-Filmernas intro-text ska renderas med hjälp av “markdown” för formatering
-När användare besöker en filmsida som inte existerar ska en felsida visas och servern svara med korrekt HTTP-status, och ett integrationstest bekräftar att detta fungerar
-Inlämning
-Uppgiften lämnas in genom att koden publiceras på GitHub och en länk till repot skickas in via ItsLearning. Projektet ska gå att köra vid bedömningen. Node-projektet ska vara konfigurerat så att:
 
-Alla dependencies installeras när man kör “npm install” (måste finnas i package.json)
-Servern går att starta med “npm start”
-Test ska gå att köra med “npm test”
-Betygskriterier
-På denna uppgift kan man få betygen underkänt, godkänt eller väl godkänt.
+## Assignment Requirements
 
-Betyg Godkänd
-Enligt kursplanen: För att få betyget Godkänt (G) ska den studerande ha genomfört kursen och nått alla kursens läranderesultat.
+[] Alla dependencies installeras när man kör “npm install” (måste finnas i package.json)
 
-Det betyder för denna uppgift:
+[] Servern går att starta med “npm start”
 
-Källkod redovisad via GitHub
-Projektet går att starta med npm start, varpå sidan går att besöka på http://localhost:5080
-Filmsidorna så som de beskrivs i “Moment” går att besöka
-Korrekt integrationstest går att köra med “npm test” och lyckas till 100%
-Betyg Väl Godkänd
-Enligt kursplanen: För att få betyget Väl godkänt (VG) ska den studerande med hög kvalitet genomfört kursen och nått alla kursens läranderesultat.
+[] Test ska gå att köra med “npm test”
 
-Den studerande har fördjupad kunskap och förståelse för webbapplikationer genom programmering på servern och vilken roll databaser och API:er har i en webbapplikation.
+## TODO
 
-Det betyder för denna uppgift, utöver kriterierna för godkänt:
+Node baserad webbapp med SSR
 
-Samtliga VG-moment är genomförda
-Koden håller hög kvalitet avseende sådant som struktur, formatering, och “separation of concerns”
-Valet av template-motor motiveras utifrån fördjupad kunskap och förståelse
+[] Filmlista
 
-### STARTING FRESH
+[] Enskild Filmsida
 
-Jag överväger att byta till en templatemotor som jag har fått mer erfarenhet av. (EJS)
-Jag uppskattar att det går att blanda JS direkt i mallarna.
-Men jag ska prova först med handlebars så jag tar vid där jag slutade.
+[] Omvandla Markdown till HTML
 
-TODO:
-() Filmlista från API:et https://plankton-app-xhkom.ondigitalocean.app/api/movies
-() Enskild filmsida från API:et https://plankton-app-xhkom.ondigitalocean.app/api/movies/<id>
-() Omvandla markdown till HTML
-() Felsida, om anv försöker besöka en filmsida som inte finns, returnerar servern en anpassad felsida med HTTP status 404. Verifieras med ett integrationstest. SKA köras med npm test. API anrop ska funka, likaså rendering av filmer och felhantering. Jag ska hålla testerna uppdelade så att jag kan testa felsidan separat/isolerat.
+[] Fel-sida 404
 
-MÅL:
-Node-baserad webbapp med serverside rendering
+[] Integrationstest
 
-TEST!
-Kolla startsida / om filmer hämtas och sidan rederas korrekt
-Kolla enskild film om den hämtas (/movie/:id)
-404- se till att fel route ger felmeddelande
+[] En styling som gör mig glad
+
+## Justification
+
+### Varför valde jag handlebars?
+
+Svar: Jag vill rendera HTML med hjälp av data och hålla logiken utanför strukturen.
+
+Syntaxen är enkel att förstå, läsa och underhålla.
+
+Smidig integrering med Express.
+
+Jag kände inte behov av JS direkt i mallarna med EJS eller liknande.
+
+### Varför konfigurerade jag mitt test script så att Jest körs med Node:s VM-modulstöd?
+
+Svar: För att slippa babel och möjliggöra att app-koden och testerna kan köras som rena Ecma Script Moduler.
+Jag fick vara kreativ.
