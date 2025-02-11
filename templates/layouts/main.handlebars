@@ -16,18 +16,19 @@
       <div class='header__logo'>
         <h1 class='header__logo-title'>{{logoTitle}}</h1>
       </div>
-      
+    </header>
       <main class='main'>
         <!-- Inject dynamic content (Moviepage) -->
         {{{body}}}
  
       </main>
 
-    </header>
-
     <footer class='footer'>
       <p>{{footerText}}</p>
     </footer>
+
+<!--script tag for main, supposed to work as a source of clientcode/logic for my entire page-->
+<script type="module" src="/static/Script/main.js"></script>
 
   </body>
 </html>

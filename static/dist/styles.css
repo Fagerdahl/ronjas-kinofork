@@ -606,10 +606,18 @@ footer {
   flex-direction: column;
 }
 
-.movie__image {
+.movie img {
   width: 100%;
   height: 200px;
   object-fit: cover;
+}
+
+.movie a:active,
+.movie a:link,
+.movie a:visited,
+.movie a:hover {
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .movie__content {
@@ -621,6 +629,30 @@ footer {
   font-size: 1.2rem;
   color: #ffffff;
   margin-bottom: 10px;
+}
+
+.movie__wrapper__solo {
+  display: flex;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.movie__wrapper__solo img {
+  max-width: 100%;
+}
+
+.movie-card__intro {
+  margin-bottom: 2rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
+body {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100vh;
 }
 
 /* Additional movie details styling */

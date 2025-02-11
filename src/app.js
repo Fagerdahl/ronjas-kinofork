@@ -1,7 +1,5 @@
-//Here goes the functionality in my express app.
-//This file needs to contain all my Routes
+//SERVER CODE- Xpress routes and templating mm
 
-//express
 import express from 'express'
 import { engine } from 'express-handlebars'
 import axios from 'axios'

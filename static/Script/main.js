@@ -1,7 +1,9 @@
-//Fetch FrontPage Content
-//Loading all duynamic content into out page
+//Fetching frontpage content but this is atm a mix og client logic and server logic
+//This SHOULD contain client code= JS that manipulates DOM, fetches JSON mm.
+//Ronjaaaa, fix the imports =  initMovies(), debounce(), executeSearch() och createMovies()
 
 import { fetchAPI } from './fetch.js'
+import { showSoloMovie } from './singleMovieCard.js'
 
 async function loadFrontPageContent() {
   try {
