@@ -2,9 +2,6 @@
 //This SHOULD contain client code= JS that manipulates DOM, fetches JSON mm.
 //Ronjaaaa, fix the imports =  initMovies(), debounce(), executeSearch() och createMovies()
 
-import { fetchAPI } from './fetch.js'
-import { showSoloMovie } from './singleMovieCard.js'
-
 async function loadFrontPageContent() {
   try {
     const contentResponse = await fetch('FrontPage-content.json')
@@ -77,26 +74,3 @@ async function addFrontPageContent() {
   document.querySelector('.footer__find-Us-country').innerHTML = frontPageContent.footer.findUsCountry
   document.querySelector('.footer__partners-title').innerHTML = frontPageContent.footer.partnersTitle
 }
-// Eventlistener for search input
-document.addEventListener('DOMContentLoaded', () => {
-  initMovies()
-  const searchInput = document.querySelector('.search__input')
-  const debouncedSearch = debounce((query) => {
-    if (query.length >= 3) {
-      executeSearch(query)
-    } else if (query.length === 0) {
-      createMovies()
-    } else {
-      console.log('För kort sökfras')
-    }
-  }, 300) // 300ms delay
-
-  // Clear search field button
-  const clearButton = document.querySelector('.search__clear')
-
-  clearButton.addEventListener('click', function () {
-    searchInput.value = ''
-    searchInput.focus()
-    createMovies()
-  })
-})

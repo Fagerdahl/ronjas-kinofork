@@ -11,6 +11,12 @@ const app = express()
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+//Confuguration variable for header and footer
+const SITE_CONFIG = {
+  logoTitle: 'Kino Kvikkjokk',
+  footerText: 'Kino 2025',
+}
+
 app.use('/static', express.static(path.join(__dirname, '..', 'static')))
 
 //Configuration template engine
@@ -28,8 +34,8 @@ app.get('/', async (req, res) => {
     res.render('home', {
       title: 'Welcome to Ronjas express app', //injections
       movies, //injections, movies to our page
-      logoTitle: 'Kino Kvikkjokk', //injections
-      footerText: 'Kino 2025', //injections
+      ...SITE_CONFIG, //logoTitle available thanks to this
+      layout: 'main', //Explicit layout
     })
   } catch (error) {
     console.error('Fel vid hämtning av filmer:', error)
@@ -42,12 +48,24 @@ app.get('/movie/:id', async (req, res) => {
   try {
     const { id } = req.params
     const response = await axios.get(`https://plankton-app-xhkom.ondigitalocean.app/api/movies/${id}`)
-    const movie = response.data
+    const movieData = response.data.data
+
+    //This is what we want from the API
+    const { title, intro, description, image } = movieData.attributes
 
     //Rendering a page with moviedata required in the assignment
-    res.render('movie', { title: movie.title, movie, logoTitle: 'Kino Kvikkjokk', footerText: 'Kino 2025' })
+    res.render('movie', {
+      title,
+      movie: description || intro,
+      poster: image.url,
+      ...SITE_CONFIG,
+    })
   } catch (error) {
-    res.status(404).render('404', { title: 'Film ej hittad', logoTitle: 'Kino Kvikkjokk', footerText: 'Kino 2025' })
+    console.error('Fel vid hämtning av film:', error)
+    res.status(404).render('404', {
+      title: 'Film ej hittad',
+      ...SITE_CONFIG,
+    })
   }
 })
 
@@ -55,8 +73,7 @@ app.get('/movie/:id', async (req, res) => {
 app.use((req, res) => {
   res.status(404).render('404', {
     title: 'Sidan hittades tyvärr inte',
-    logoTitle: 'Kino Kvikkjokk',
-    footerText: 'Kino 2025',
+    ...SITE_CONFIG,
   })
 })
 
